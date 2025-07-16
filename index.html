@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مولد اشتراک پراکسی</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>مولد اشتراک پراکسی</h1>
+        <p>مرکزی برای دریافت لینک‌های اشتراک پراکسی</p>
+        <div class="proxy-types">
+            <button onclick="generateSubscription('vless')">VLESS</button>
+            <button onclick="generateSubscription('vmess')">VMess</button>
+            <button onclick="generateSubscription('shadowsocks')">Shadowsocks</button>
+        </div>
+        <textarea id="subscription-link" readonly placeholder="لینک اشتراک اینجا ظاهر می‌شود..."></textarea>
+        <button onclick="copyLink()">کپی لینک</button>
+        <footer>ساخته شده توسط میلاد</footer>
+    </div>
+    <script>
+        function generateSubscription(type) {
+            document.getElementById('subscription-link').value = لینک: ${type};
+        }
+
+        function copyLink() {
+            const textarea = document.getElementById('subscription-link');
+            if (textarea.value) {
+                navigator.clipboard.writeText(textarea.value).then(() => {
+                    alert('لینک کپی شد!');
+                }).catch(err => {
+                    alert('خطا در کپی لینک!');
+                });
+            } else {
+                alert('اول یه نوع پراکسی انتخاب کن!');
+            }
+        }
+    </script>
+</body>
+</html>
